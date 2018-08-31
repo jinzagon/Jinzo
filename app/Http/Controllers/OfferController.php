@@ -3,37 +3,105 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Offer;
+use App\Models\Offer;
 
 class OfferController extends Controller
 {
-    public function index() {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        
+        $offers = Offer::all();
 
-    	$offers = Offer::get();
-
-    	return view('admin.offers.index', compact('offers'));
-
+        return view($this->isAdminRequest() ? 'admin.offers.index': 'offers.index')
+            ->with('offers', $offers);
     }
 
-    public function create() {
-
-    	return view('admin.offers.create');
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.offers.create');
     }
- 
-    public function store(Request $request) {
 
-    	$offer = new Offer;
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $offer = Offer::create($request->only(
+            'name',
+            'description',
+            'image_50',
+            'image_350',
+            'link'
+        ));
 
-    	$offer->name = $request->name;
-    	$offer->description = $request->description;
-    	$offer->image_50 = $request->image_50;
-    	$offer->image_350 = $request->image_350;
-    	$offer->link = $request->link;
+        return redirect()->route('admin.offers.index');
+    }
 
-    	$offer->save();
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $offer = Offer::findOrFail($id);
 
-    	return redirect('/admin/offers');
+        return view('admin.offers.show')
+            ->with('offer', $offer);
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $offer = Offer::findOrFail($id);
+
+        return view('admin.offers.edit')
+            ->with('offer', $offer);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $offer = Offer::findOrFail($id);
+        $offer->update($request->all());
+
+        return view('admin.offers.show')
+            ->with('offer',$offer);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

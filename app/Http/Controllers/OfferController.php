@@ -15,7 +15,11 @@ class OfferController extends Controller
     public function index()
     {
         
-        $offers = Offer::all();
+        $offers = Offer::where(function($query){
+            if(!$this->isAdminRequest()){
+                $query->active();
+            }
+        })->get();
 
         return view($this->isAdminRequest() ? 'admin.offers.index': 'offers.index')
             ->with('offers', $offers);
@@ -39,13 +43,7 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        $offer = Offer::create($request->only(
-            'name',
-            'description',
-            'image_50',
-            'image_350',
-            'link'
-        ));
+        $offer = Offer::create($request->all());
 
         return redirect()->route('admin.offers.index');
     }
@@ -57,10 +55,10 @@ class OfferController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
         $offer = Offer::findOrFail($id);
 
-        return view('admin.offers.show')
+        return view($this->isAdminRequest() ? 'admin.offers.show': 'offers.show')
             ->with('offer', $offer);
     }
 

@@ -1,25 +1,36 @@
 @extends('layouts.main')
 
+@section('pageStyle','landing-page')
+@section('navbarStyle', 'navbar-fixed-top')
+
 @section('content')
 
-<!-- <div class="row">
-	@foreach ($offers as $offer)
-	<div class="col-lg-4">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">{{ $offer->name }}</h5>
-				<p class="card-text" style="white-space: pre-line;">{{ $offer->description }}</p>
-				<a href="{{ $offer->link }}" class="card-link">Link</a>
-			</div>
-		</div>
-	</div>
-	@endforeach
-</div> -->
 <div class="jumbotron">
 	<div class="container text-center">
 		<div>
 			<h1>Top Offers</h1>
-			<p>Cillum cupidatat laborum non ipsum sunt cillum ad ea excepteur nostrud proident est. Cillum commodo dolor ea incididunt pariatur voluptate est in. Excepteur ex mollit ullamco eiusmod dolore. Laboris est ullamco ex eiusmod et. Labore voluptate voluptate mollit laboris. Ipsum eu nisi in aute minim minim dolore nulla consequat.</p>
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+					
+					@foreach($topOffers as $key => $offer)
+						<div class="item {{$key==0? 'active':''}}">
+							<div class="carousel-content">
+
+								<h4>
+									<a href="{{route('offers.show', ['id'=>$offer->id])}}">{{ $offer->name}}</a></p>
+								</h4>
+							</div>							
+						</div>
+					@endforeach
+				</div>
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					@foreach($topOffers as $key => $offer)
+						<li data-target="#carousel-example-generic" data-slide-to="{{$key}}" class="{{$key==0?'Active':''}}"></li>
+					@endforeach
+				</ol>
+			</div>
 			<div class="input-group">
 				<input type="text" name="search" id="search" class="form-control" placeholder="What are you searching for">
 				<div class="input-group-addon">
@@ -30,7 +41,7 @@
 	</div>
 </div>
 
-<section class="bg-light top-offers text-center">
+<section class="bg-light offers-list text-center">
 
 	<div class="section-heading">
 		<h3>Top offers for the month</h3>
@@ -40,25 +51,122 @@
 	<div class="container">
 		<div class="row offers">
 			@foreach ($offers as $offer)
-				<div class="col-md-4 ">
-					<div class="card">
-						<img src="{{url($offer->image_350)}}" alt="Avatar" style="width:100%">
-						<div class="reviews">
-							<span>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-
-							</span>
-							<span class="text-muted">(12 Reviews)</span>
+			<div class="col-md-4 ">
+				<div class="card">
+					<div class="image-container">
+						<div class="details">
+							<h3><a href="{{route('offers.show',['id'=>$offer->id])}}">{{$offer->name}}</a></h3>
 						</div>
+						<img src="{{url($offer->image_350)}}" alt="Avatar" class="img-responsive ">
+
+					</div>
+					<div class="reviews">
+						<span>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-half-o"></i>
+							<i class="fa fa-star-o"></i>
+
+						</span>
+						<span class="text-muted">({{$offer->ratings->count()}} Reviews)</span>
 					</div>
 				</div>
+			</div>
 			@endforeach
-		</div>  
+		</div>
 	</div>
 </section>
 
+<section class="site-stats  container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<h1>{{$numOffers}}</h1>
+				<p>Offers</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<h1>{{$numUsers}}</h1>
+				<p>Users</p>
+			</div>
+			<div class="col-md-4 text-center">
+				<h1>{{$vistors}}</h1>
+				<p>Visitors</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h1>Get YOU UPDATE</h1>
+			</div>
+			<div class="col-md-8">
+				<div class="form-group" style="margin-top:23px">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Your Email Address" >
+						
+						<div class="input-group-addon"><i class="fa fa-paper-plane"></i></div>						
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</section>
+
+<footer  class="footer">
+	<div class="container ">
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<h1>Final Words</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </p>
+			</div>
+			<div class="col-md-4 text-center">
+				<h1>Contact Us</h1>
+				<p>contact@gmail.com</p>
+		</div>
+			<div class="col-md-3 text-center">
+				<h1>Need Mobile Apps?</h1>
+				<p>Subscribe here for you wil be notified when mobile apps are avaliable</p>
+				
+				<div class="input-group">
+					<input type="text" placeholder="Your Email" class="form-control">
+					
+					<div class="input-group-addon"><i class="fa fa-paper-plane"></i></div>
+					
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="text-center darker">
+		<p>Copyright © 2018. All rights reserved</p>
+	</div>
+</footer>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+	$(function($) {
+		function fixDiv() {
+			var $navbar = $('#main-navbar');
+			console.log($(window).scrollTop());
+			if ($(window).scrollTop() > 0){
+				$navbar.removeClass('invisible-navbar');
+
+			}
+			else{
+				$navbar.addClass('invisible-navbar');
+
+			}
+   		}
+ 		$(window).scroll(fixDiv);
+		fixDiv();
+   });
+</script>
 @endsection

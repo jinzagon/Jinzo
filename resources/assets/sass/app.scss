@@ -7,3 +7,213 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+.landing-page {
+    .navbar{
+        &.navbar-default.invisible-navbar{
+            background: none!important;
+            a{
+                color:white !important;
+                &:hover{
+                    color:white !important;
+                }
+            }
+        }
+    }
+    .jumbotron {
+        background-image:linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+          ), url("~/imgs/jennifer-latuperisa-andresen-635202-unsplash.jpg");
+        background-size: cover !important;
+        min-height: 500px;
+        background-position-y:70%;
+    
+        /*  OR Image in the center bottom of the container  */
+        // background-position: center bottom;
+        color:white;
+    
+        .container {    
+            position: relative;
+
+            &> div {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        h1 {
+            font-size: 20pt;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        .carousel {
+            margin-top:30px;
+            margin-bottom:20px;
+            a{
+                color:white;
+                text-decoration: none;
+            }
+            .carousel-indicators{
+                bottom:-23px;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .jumbotron {
+            .container{
+                height: calc(100vh - 50px);
+            }
+        }
+    }
+    
+    /* Small devices (tablets, 768px and up) */
+    @media (min-width: 768px) { 
+        .jumbotron {
+            .container{
+                height: 50vh;
+            }   
+        }
+    }
+    
+    /* Medium devices (desktops, 992px and up) */
+    @media (min-width: 992px) { 
+        
+    }
+    
+    /* Large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) { 
+    
+    }
+    
+    
+    section {
+        overflow: hidden;
+        padding: 50px 0px;
+        .section-heading {
+            margin-top:30px;
+            margin-bottom:30px;
+        }
+    
+    }
+    .bg-light {
+        background:#f8f9fa!important;
+    }
+    .bg-white{
+        background: white !important;
+    }
+
+    .site-stats {
+        padding: 100px 0px;
+        color:white;
+        background-position-y: 20%;
+        background-size: cover !important;;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)
+          ),url('~/imgs/john-towner-154060-unsplash.jpg');
+
+        h1 {
+            font-size: 60px;
+            margin-bottom: 0px;
+        }
+    }
+}
+
+footer{
+    &.footer{
+        color:white;
+        background-size: cover;
+        background-position-y: 60%;
+        background-image:linear-gradient(
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.8)
+          ),url('~/imgs/delfi-de-la-rua-152121-unsplash.jpg');
+        padding-top:50px;
+
+        .darker{
+            margin-top:50px;
+            background:rgba(0, 0, 0, 0.9);
+            padding:15px 0px;
+        }
+    }
+}
+
+.offers-list {
+    .offers {
+        .card {
+            .image-container{
+                position: relative;
+                display: block;
+                overflow: hidden;
+                img {
+                    position: relative;
+                    object-fit: cover;
+                    height: 350px;
+                    width:100%;
+                }
+                .details{
+                    position: absolute;
+                    color: white;
+                    z-index: 1;
+                    display: block;
+                    text-align: left;
+                    padding:15px;
+                    bottom:0;
+                    a{
+                        text-decoration: none;
+                        color:white;
+                    }
+                    h5{
+                        font-weight: 700;
+                    }
+                }
+
+            }
+            .reviews {
+                padding: 15px;
+                color: #eee;
+                text-align: left;
+            }
+        } 
+    } 
+
+    .fa-star, .fa-star-half-o{
+        color: #FFCA0A;
+    }
+}
+.offers-list-page {
+    .offers-list {
+        .offers {
+            .card {
+                .image-container{
+                    img{
+                        height:500px
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.offer-page{
+    .image-container{
+        position: relative;
+        overflow: hidden;
+        img{
+            display: relative;
+            // padding:15px;
+            width:100%;
+            object-fit:cover;
+            height:600px; 
+        }
+    }
+}

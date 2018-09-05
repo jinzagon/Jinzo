@@ -101,8 +101,9 @@
 			</div>
 		</form> -->
 		<ul class="nav menu">
-			<li class="active"><a href="{{route('admin.dashboard')}}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+			<li><a href="{{route('admin.dashboard')}}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li><a href="{{route('admin.offers.index')}}"><em class="fa fa-tags">&nbsp;</em> Offers</a></li>
+			<li><a href="{{route('admin.categories.index')}}"><em class="fa fa-list">&nbsp;</em> Categories</a></li>
 			<li>
 				<a href="{{ route('logout') }}"
 					onclick="event.preventDefault();

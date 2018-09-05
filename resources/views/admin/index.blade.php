@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('pageStyle','landing-page')
+
 @section('content')
 <div class="row">
     <ol class="breadcrumb">

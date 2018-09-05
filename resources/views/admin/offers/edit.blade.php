@@ -32,6 +32,18 @@
                         <input id="name" name="name" placeholder="" class="form-control input-md" required="" type="text" value="{{$offer->name}}">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="name">Active</label>
+                    <div class="col-md-10">
+                        <input id="is_active" name="is_active" placeholder="" class="input-md" required="" type="checkbox" value="1" {{$offer->is_active?'checked="checked"':''}}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="name">Rank</label>
+                    <div class="col-md-10">
+                        <input id="rank" name="rank" placeholder="" class="input-md form-control" required="" type="number" value="{{$offer->rank}}" min="0">
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="description">Description</label>

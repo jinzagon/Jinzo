@@ -19,6 +19,7 @@ Route::resource('offers', 'OfferController', ['only' => ['index', 'show']]);
 
 Route::name('admin.')->prefix('admin')->group(function(){
     Route::resource('offers','OfferController');
+    Route::resource('categories','CategoryController');
     Route::get('/','AdminController@index')->name('dashboard');
 });
 

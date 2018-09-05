@@ -33,6 +33,10 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th class="text-center">Active</th>
+                        <th class="text-center">Rank</th>
+                        <th class="text-center">Ratings</th>
+                        <th class="text-center">Created</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -40,7 +44,11 @@
                     @foreach ($offers as $offer)
                     <tr>
                         <td>{{ $offer->id }} </td>
-                        <td>{{ $offer->name }}</td>
+                        <td>{{ $offer->name }} </td>
+                        <td class="text-center"><i class="fa {{ $offer->is_active? 'fa-check' : 'fa-square-o'}}"></i></td>
+                        <td class="text-center">{{ $offer->rank }}</td>
+                        <td class="text-center">{{$offer->ratings()->count() ?? $offer->ratings()->sum('rating')/$offer->ratings()->count()}}</td>
+                        <td class="text-center">{{ $offer->created_at->toFormattedDateString() }}</td>
                         <td>
                             <a href="{{route('admin.offers.show', ['id'=>$offer->id])}}">View</a> |
                             <a href="{{route('admin.offers.edit', ['id'=>$offer->id])}}">Modify</a> |

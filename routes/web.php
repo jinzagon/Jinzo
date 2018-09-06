@@ -14,7 +14,14 @@
 Auth::routes();
 
 Route::get('/', 'WebController@index');
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/offers', 'OfferController@index');
-Route::get('/admin/offers/create', 'OfferController@create');
-Route::post('/admin/offers/store', 'OfferController@store');
+
+Route::resource('offers', 'OfferController', ['only' => ['index', 'show']]);
+
+Route::name('admin.')->prefix('admin')->group(function(){
+    Route::resource('offers','OfferController');
+    Route::resource('categories','CategoryController');
+    Route::get('/','AdminController@index')->name('dashboard');
+});
+
+
+Route::get('/home', 'HomeController@index')->name('home');

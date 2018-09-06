@@ -32,7 +32,9 @@ class OfferController extends Controller
      */
     public function create()
     {
-        return view('admin.offers.create');
+        $categories = \App\Models\Category::all();
+        return view('admin.offers.create')
+            ->with('categories', $categories);
     }
 
     /**
@@ -71,9 +73,11 @@ class OfferController extends Controller
     public function edit($id)
     {
         $offer = Offer::findOrFail($id);
+        $categories = \App\Models\Category::all();
 
         return view('admin.offers.edit')
-            ->with('offer', $offer);
+            ->with('offer', $offer)
+            ->with('categories', $categories);
     }
 
     /**

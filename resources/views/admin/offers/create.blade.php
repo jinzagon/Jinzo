@@ -48,6 +48,19 @@
                             <input id="rank" name="rank" placeholder="" class="input-md form-control" required="" type="number"  min="0">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="name">Category</label>
+                        <div class="col-md-10">
+                            <select id="category_id" name="category_id" class="input-md form-control">
+                                <option value="0">Select a category</option>
+                                @foreach($categories as $category )
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="description">Description</label>
                         <div class="col-md-10">

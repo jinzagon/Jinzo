@@ -5,7 +5,7 @@
 @section('navbarStyle','default')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="padding:15px;background: white">
         <div class="row">
             <div class="col-md-6">
                 <div class="image-container">
@@ -15,7 +15,11 @@
 
             </div>
             <div class="col-md-6">
-                <h1><a href="{{$offer->link}}" target="_blank">{{$offer->name}}</a></h1>
+                <h1>{{$offer->name}}</h1>
+                @if(!is_null($offer->category))
+                    <span class="badge">{{ $offer->category->name}}</span>
+                @endif
+                <br>
                 <p style="white-space: pre-line;">{{$offer->description}}</p>
                 <a href="{{$offer->link}}" target="_blank">{{$offer->link}}</a>
                 

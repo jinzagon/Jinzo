@@ -36,15 +36,18 @@
                         <tr>
                             <td>{{$category->id}}</td>
                             <td>{{$category->name}}</td>
-                            <td>{{$category->created_at->toDateString()}}</td>
+                            <td>{{$category->created_at->toFormattedDateString()}}</td>
                             <td>
-                                <a href="{{route('admin.categories.edit',['id'=>$category->id])}}">Modify</a>
+                                <a href="{{route('admin.categories.edit',['id'=>$category->id])}}">Modify</a> |
+                                <a href="{{route('admin.categories.destroy',['id'=>$category->id])}}">Delete</a>
                             </td>
                         </tr>
                         @endforeach
-                        <tr>
-                            <td class="text-center" colspan="4">There are no categories</td>
-                        </tr>
+                        @if($categories->count()==0)
+                            <tr>
+                                <td class="text-center" colspan="4">There are no categories</td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>

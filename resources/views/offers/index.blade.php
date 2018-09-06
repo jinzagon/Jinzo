@@ -19,6 +19,9 @@
                         <div class="image-container">
                             <div class="details">
                                 <h3><a href="{{route('offers.show',['id'=>$offer->id])}}">{{$offer->name}}</a></h3>
+                                @if(!is_null($offer->category))
+                                    <span class="badge">{{ $offer->category->name}}</span>
+                                @endif
                             </div>
                             <img src="{{url($offer->image_350)}}" alt="Avatar">
     

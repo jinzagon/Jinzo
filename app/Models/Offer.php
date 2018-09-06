@@ -56,4 +56,8 @@ class Offer extends Eloquent
 	{
 		return $this->belongsTo(\App\Models\Category::class);
 	}
+
+	public function ratings() {
+		return $this->morphMany(Rating::class,'rateable');
+	}
 }

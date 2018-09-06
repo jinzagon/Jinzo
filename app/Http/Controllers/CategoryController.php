@@ -51,7 +51,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view('admin.category.show', compact($category));
+        return view('admin.categories.show', compact($category));
     }
 
     /**
@@ -64,7 +64,8 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view('admin.category.edit', compact($category));
+        return view('admin.category.edit')
+            ->with('category', $category);
     }
 
     /**

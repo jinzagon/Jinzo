@@ -21,7 +21,7 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <form class="form-horizontal" method="POST" action="{{route('admin.categories.store')}}">
+        <form method="POST" action="{{route('admin.categories.store')}}">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="name">Name</label>
@@ -31,6 +31,8 @@
                 <label for="name">Description</label>
                 <textarea type="text" class="form-control" name="description"></textarea>
             </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+
         </form>
     </div>
 </div>

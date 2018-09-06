@@ -15,6 +15,7 @@ class WebController extends Controller
         $topOffers = Offer::active()->orderBy('rank')->take(5)->get();
         $numOffers = Offer::count();
         $numUsers = Tracker::onlineUsers()->count();
+        $categories = \App\Models\Category::take(6)->get();
 
         $vistors = Tracker::logByRouteName('tracker.stats.log')
             ->select('tracker_log.session_id')
@@ -28,6 +29,7 @@ class WebController extends Controller
             ->with('numOffers', $numOffers)
             ->with('numUsers', $numUsers)
             ->with('vistors', $vistors)
+            ->with('categories', $categories)
             ->with('offers', $offers);
 
     }

@@ -33,7 +33,10 @@
 				</ol>
 			</div>
 			<div class="input-group">
-				<input type="text" name="search" id="search" class="form-control" placeholder="What are you searching for">
+				<form method="GET" action="{{route('offers.index')}}" >
+					<input type="text" name="q" id="q" class="form-control" placeholder="What are you searching for">
+
+				</form>
 				<div class="input-group-addon">
 					Search
 				</div>
@@ -48,7 +51,7 @@
 				<div class="col-md-2 col-centered">
 					<div class="panel">
 						<div class="panel-body">
-							{{$category->name}}
+							<a href="{{route('offers.index', ['category' => $category->name])}}">{{$category->name}}</a>
 						</div>
 					</div>
 				</div>

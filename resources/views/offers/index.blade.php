@@ -3,9 +3,15 @@
 @section('pageStyle','offers-list-page')
 
 @section('content')
-    <section>
+    <section style="margin-bottom: 50px;">
         <div class="container">
             <H1 class="text-center">Offers</H1>
+            <form method="GET" action="{{route('offers.index')}}" >
+                <div class="form-group">
+                    <input type="text" name="q" id="q" class="form-control" placeholder="Search" value="{{ app('request')->input('q') }}">                    
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Search</button>
+            </form>
         </div>
     </section>
 
@@ -40,6 +46,10 @@
                     </div>
                 </div>
                 @endforeach
+
+                @if($offers)
+                    <p class="text-center">There are no offers that matches your search</p>
+                @endif
             </div>
         </div>
     </section>

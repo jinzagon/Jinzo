@@ -39,13 +39,13 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="name">Active</label>
                         <div class="col-md-10">
-                            <input id="is_active" name="is_active" placeholder="" class="input-md" required="" type="checkbox" value="1">
+                            <input id="is_active" name="is_active" placeholder="" class="input-md" type="checkbox" value="1">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="name">Rank</label>
                         <div class="col-md-10">
-                            <input id="rank" name="rank" placeholder="" class="input-md form-control" required="" type="number"  min="0">
+                            <input id="rank" name="rank" placeholder="" class="input-md form-control" type="number"  min="0">
                         </div>
                     </div>
 
@@ -71,24 +71,21 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="image_50">50x50 Image</label>
                         <div class="col-md-10">
-                            <input id="image_50" name="image_50" placeholder="http://" class="form-control input-md"
-                                required="" type="text">
+                            <input id="image_50" name="image_50" placeholder="http://" class="form-control input-md" type="text">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="image_350">350x500 Image</label>
                         <div class="col-md-10">
-                            <input id="image_350" name="image_350" placeholder="http://" class="form-control input-md"
-                                required="" type="text">
+                            <input id="image_350" name="image_350" placeholder="http://" class="form-control input-md" type="text">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="link">Link</label>
                         <div class="col-md-10">
-                            <input id="link" name="link" placeholder="http://" class="form-control input-md"
-                                required="" type="text">
+                            <input id="link" name="link" placeholder="http://" class="form-control input-md" type="text">
                         </div>
                     </div>
 

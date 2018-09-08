@@ -12,12 +12,27 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         
-        $offers = Offer::where(function($query){
+        $offers = Offer::where(function($query) use($request){
             if(!$this->isAdminRequest()){
                 $query->active();
+            }
+
+            if($request->q){
+                $query->where(function($query) use($request){
+                    $query->whereRaw("MATCH (name,description) AGAINST (?)", [$request->get('q')]);
+                    $query->orWhereHas("category", function($query) use($request) {
+                        $query->whereRaw("MATCH (name) AGAINST (?)", [$request->get('q')]);
+                    });
+                });
+            }
+
+            if($request->category){
+                $query->whereHas('category', function($query) use($request){
+                    $query->whereRaw("MATCH (name) AGAINST (?)", [$request->get('category')]);
+                });
             }
         })->get();
 
@@ -104,6 +119,8 @@ class OfferController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $offer = Offer::find($id)->delete();
+
+        return back();
     }
 }

@@ -39,7 +39,11 @@
                             <td>{{$category->created_at->toFormattedDateString()}}</td>
                             <td>
                                 <a href="{{route('admin.categories.edit',['id'=>$category->id])}}">Modify</a> |
-                                <a href="{{route('admin.categories.destroy',['id'=>$category->id])}}">Delete</a>
+                                <form action="{{route('admin.categories.destroy', ['id' => $category->id])}}" method="post" style="display: inline;">
+                                        <input name="_method" type="hidden" value="DELETE">
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-link" type="submit">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

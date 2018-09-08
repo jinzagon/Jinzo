@@ -28,7 +28,7 @@
 
     <div class="panel-body">
         <div class="container">
-            <img src="{{ $offer->image_350 }}" alt="{{ $offer->name}}" class="image-responsive pull-left" style="padding:15px">
+            <img src="{{ $offer->image_350 }}" alt="{{ $offer->name}}" class="image-responsive pull-left" style="padding:20px; width: 350px;height: 500px;overflow: hidden;object-fit: cover">
             <h3><a href="{{$offer->link}}" target="_blank">{{$offer->name}}</a></h3>
             <p style="white-space: pre-line;">{{$offer->description}}</p>
             <a href="{{$offer->link}}" target="_blank">{{$offer->link}}</a>

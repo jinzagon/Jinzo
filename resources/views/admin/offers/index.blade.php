@@ -52,13 +52,17 @@
                         <td>
                             <a href="{{route('admin.offers.show', ['id'=>$offer->id])}}">View</a> |
                             <a href="{{route('admin.offers.edit', ['id'=>$offer->id])}}">Modify</a> |
-                            <a href="{{route('admin.offers.destroy', ['id'=>$offer->id])}}">Delete</a>
+                            <form action="{{route('admin.offers.destroy', ['id' => $offer->id])}}" method="post" style="display: inline;">
+                                    <input name="_method" type="hidden" value="DELETE">
+                                {{ csrf_field() }}
+                                <button class="btn btn-link" type="submit">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
                     @if($offers->count()==0)
                         <tr>
-                            <td colspan="3" class="text-center">There are current no offers avaliable</td>
+                            <td colspan="7" class="text-center">There are current no offers avaliable</td>
                         </tr>
                     @endif
                 </tbody>
